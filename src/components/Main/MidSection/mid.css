@@ -1,0 +1,9 @@
+.sort_form {
+  display: flex;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.select_mid {
+  margin-left: 20px;
+}
