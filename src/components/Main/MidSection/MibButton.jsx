@@ -23,13 +23,17 @@ export default function MidButton(props) {
     if (value === "none") {
       props.unsorted();
     }
+    if (value === "manufacturer") {
+      props.sortCardsByManufacturer();
+    }
   }
-//rewrite ti switch//
+  //rewrite ti switch//
   return (
     <div className="sort_form">
       <label htmlFor="sorter">Sort by: </label>
       <br />
-      <select id="sorter" className="select_mid" value={data.sorter} onChange={handleChange} name="sorter">
+      <select id="sorter" className="select_mid" value={data.sorter}
+              onChange={handleChange} name="sorter">
         <option value="none">--None--</option>
         <option value="price">Price</option>
         <option value="name">Name</option>

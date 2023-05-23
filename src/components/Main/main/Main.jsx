@@ -29,11 +29,18 @@ export default function Main(props) {
     setSortData(sorted);
   }
 
+  function sortCardsByManufacturer() {
+    const sorted = [...data.results].sort((a, b) => {
+      return a.manufacturer.toLowerCase().localeCompare(b.manufacturer.toLowerCase());
+    });
+    setSortData(sorted);
+  }
+
   function unsorted() {
     const sorted = [...data.results];
     setSortData(sorted);
   }
-  //rewrite
+
   return (
     <div>
       <div
@@ -46,15 +53,19 @@ export default function Main(props) {
       >
         <Carousel style={{ borderRadius: "20px" }} />
         <div className="mid_wrapper">
-          <MidMain sortCards={sortCardsByPrice} sortByName={sortCardsByName} unsorted={unsorted} />
+          <MidMain
+            sortCards={sortCardsByPrice}
+            sortByName={sortCardsByName}
+            unsorted={unsorted}
+            sortCardsByManufacturer={sortCardsByManufacturer}
+          />
         </div>
-        <Cards data={sortedData} />
+        <Cards data={sortedData} unsortedData={data.results} addToCart={props.addToCart} />
       </div>
     </div>
   );
 }
 
-
-///add popup bin  //hidden div on click ///
+///add popup bin  //hidden div on click ///done
 // read about context
-//call apply 
+//call apply

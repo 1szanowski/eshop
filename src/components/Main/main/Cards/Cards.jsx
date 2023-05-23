@@ -2,17 +2,37 @@ import React from "react";
 import "./card.css";
 import Single from "./Single";
 
-
 export default function Cards(props) {
   
-  const allItems =
-    props.data &&
-    props.data.map(el => (
-      <Single key={el.name} name={el.name}
-      manufacturer={el.manufacturer}
-      price={el.cost_in_credits}
-      sorter={props.sorter} />
-    ));
+  let allItems = null;
+
+  if (props.data.length === 0) {
+    allItems =
+      props.unsortedData &&
+      props.unsortedData.map(el => (
+        <Single
+          key={el.name}
+          name={el.name}
+          manufacturer={el.manufacturer}
+          price={el.cost_in_credits}
+          sorter={props.sorter}
+          addToCart={props.addToCart}
+        />
+      ));
+  } else {
+    allItems =
+      props.data &&
+      props.data.map(el => (
+        <Single
+          key={el.name}
+          name={el.name}
+          manufacturer={el.manufacturer}
+          price={el.cost_in_credits}
+          sorter={props.sorter}
+          addToCart={props.addToCart}
+        />
+      ));
+  }
 
   return (
     <div>
@@ -21,7 +41,3 @@ export default function Cards(props) {
     </div>
   );
 }
-
-/// add button component //  done
-// move single card comp // done
-// filter component

@@ -1,0 +1,35 @@
+.wrapper_header {
+  position: relative;
+}
+
+.header_right {
+  position: relative;
+}
+
+.rigth_cart {
+  position: relative;
+  cursor: pointer;
+}
+
+.cart_dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 200px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #9b9b9b;
+  border-radius: 8px;
+  z-index: 2;
+
+  right: auto;
+  max-width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  left: calc(100% - 192px);
+}
+.cart_dropdown p {
+  margin: 0;
+  padding: 5px 0;
+}
