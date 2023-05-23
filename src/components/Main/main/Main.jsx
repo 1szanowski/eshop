@@ -68,4 +68,10 @@ export default function Main(props) {
 
 ///add popup bin  //hidden div on click ///done
 // read about context
-//call apply
+
+
+
+//call apply 
+
+//test commgit ad
+
