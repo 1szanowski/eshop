@@ -3,7 +3,6 @@ import "./card.css";
 import Single from "./Single";
 
 export default function Cards(props) {
-  
   let allItems = null;
 
   if (props.data.length === 0) {
@@ -17,6 +16,10 @@ export default function Cards(props) {
           price={el.cost_in_credits}
           sorter={props.sorter}
           addToCart={props.addToCart}
+          counter = {props.counter}
+          handleItemCounter ={props.handleItemCounter}
+          removeFromCart = {props.removeFromCart}
+          cart ={props.cart}
         />
       ));
   } else {
@@ -30,6 +33,10 @@ export default function Cards(props) {
           price={el.cost_in_credits}
           sorter={props.sorter}
           addToCart={props.addToCart}
+          counter = {props.counter}
+          handleItemCounter ={props.handleItemCounter}
+          removeFromCart = {props.removeFromCart}
+          cart ={props.cart}
         />
       ));
   }

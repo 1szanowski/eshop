@@ -22,3 +22,26 @@
   margin: 0 auto;
   margin-top: 50px;
 }
+.wrapper_link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper_link a {
+  text-decoration: none;
+  margin-right: 50px;
+  color: black;
+  border-bottom: 1px solid transparent; 
+  transition: border-bottom-color 0.1s;
+}
+
+.wrapper_link a:hover {
+  border-bottom-color: black; 
+}
+
+
+
+
+
+

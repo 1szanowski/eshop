@@ -27,7 +27,7 @@ export default function MidButton(props) {
       props.sortCardsByManufacturer();
     }
   }
-  //rewrite ti switch//
+ 
   return (
     <div className="sort_form">
       <label htmlFor="sorter">Sort by: </label>

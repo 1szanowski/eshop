@@ -29,6 +29,7 @@
   text-overflow: ellipsis;
   left: calc(100% - 192px);
 }
+
 .cart_dropdown p {
   margin: 0;
   padding: 5px 0;

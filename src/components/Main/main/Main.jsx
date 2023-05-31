@@ -14,6 +14,7 @@ export default function Main(props) {
 
       .then(data => setData(data));
   }, []);
+console.log(data.results)
 
   function sortCardsByPrice() {
     const sorted = [...data.results].sort((a, b) => {
@@ -60,18 +61,18 @@ export default function Main(props) {
             sortCardsByManufacturer={sortCardsByManufacturer}
           />
         </div>
-        <Cards data={sortedData} unsortedData={data.results} addToCart={props.addToCart} />
+        <div className="card_global_wrapper">
+          <Cards
+            data={sortedData}
+            unsortedData={data.results}
+            addToCart={props.addToCart}
+            handleItemCounter={props.handleItemCounter}
+            counter={props.counter}
+            removeFromCart ={props.removeFromCart}
+            cart ={props.cart}
+          />
+        </div>
       </div>
     </div>
   );
 }
-
-///add popup bin  //hidden div on click ///done
-// read about context
-
-
-
-//call apply 
-
-//test commgit ad
-

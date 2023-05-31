@@ -1,13 +1,8 @@
-import "./App.css";
-import Header from "../src/components/Header/Header";
-import Main from "../src/components/Main/main/Main.jsx";
-import React, { useState, useEffect } from "react";
-import Footer from "./components/Footer/Footer";
-import { Link, Routes, Route } from "react-router-dom";
-import { CartProvider } from "./CartContext.js";
-import About from "./components/About/About";
+import { createContext, useState, useEffect } from "react";
 
-function App() {
+export const CartContext = createContext();
+
+export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [updatedCart, setTotal] = useState([]);
   const [price, setTotalPrice] = useState(0);
@@ -42,6 +37,13 @@ function App() {
     });
   }
 
+  function handleItemCounter(name) {
+    setCounter(prev => ({
+      ...prev,
+      [name]: (prev[name] || 0) + 1
+    }));
+  }
+
   useEffect(() => {
     const updatedCounter = cart.reduce((counter, item) => {
       counter[item.name] = (counter[item.name] || 0) + 1;
@@ -49,13 +51,6 @@ function App() {
     }, {});
     setCounter(updatedCounter);
   }, [cart]);
-
-  function handleItemCounter(name) {
-    setCounter(prev => ({
-      ...prev,
-      [name]: (prev[name] || 0) + 1
-    }));
-  }
 
   useEffect(() => {
     const totalPrice = cart.reduce((total, item) => total + item.price, 0);
@@ -65,38 +60,18 @@ function App() {
   }, [cart]);
 
   return (
-    <div className="App">
-      <Header cart={updatedCart} price={price} />
-      <div className="wrapper_link">
-        <Link to="/main">
-          <h3>Main Store</h3>
-        </Link>
-        <Link to="/about">
-          <h3>About Us</h3>
-        </Link>
-      </div>
-
-      <Routes>
-        <Route
-          path="/main"
-          element={
-            <Main
-              addToCart={addToCart}
-              counter={counter}
-              handleItemCounter={handleItemCounter}
-              removeFromCart={removeFromCart}
-              cart={updatedCart}
-            />
-          }
-        />
-        <Route path="/about" element={<About />} />
-      </Routes>
-      
-   
-
-      <Footer />
-    </div>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        updatedCart,
+        price,
+        counter,
+        handleItemCounter
+      }}
+    >
+      {children}
+    </CartContext.Provider>
   );
 }
-
-export default App;

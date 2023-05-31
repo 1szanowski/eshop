@@ -7,6 +7,7 @@ export default function Single(props) {
   function handleAdd() {
     props.addToCart(props.name, props.price); //mod for checkout
     setAdded(true);
+    props.handleItemCounter(props.name);
   }
 
   return (
@@ -24,10 +25,12 @@ export default function Single(props) {
       </div>
       <div className="btn_holder">
         <button onClick={handleAdd}>Add to cart</button>
-        <button className="quantity">+</button>
-        <p>quantity:1</p>
-        <button className="quantity">-</button>
-        <div className="added_to_bin">{isAddedtoCart && <span className="checkout_sign">Added</span>}</div>
+        <button className="remove_btn" onClick={() => props.removeFromCart(props.name)}>
+          Remove
+        </button>
+        <span className="checkout_sign">
+          <strong>Added {props.counter[props.name] || 0}</strong>
+        </span>
       </div>
     </div>
   );
